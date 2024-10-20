@@ -1,0 +1,9 @@
+const repl = require('repl');
+
+repl.start({
+    prompt: "",
+    eval: (command, context, filename, callback) => {
+
+        callback();
+    }
+});

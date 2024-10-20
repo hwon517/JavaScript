@@ -1,0 +1,39 @@
+const repl = require('repl');
+
+function prime_discrm(number) {
+    let div_num = 2;
+
+    while(number % div_num) {
+        div_num++;
+    }
+
+    if(number == div_num) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+repl.start({
+    prompt: "소수판별수 입력 : ",
+    eval: (command, context, filename, callback) => {
+        let number = Number(command);
+
+        if(isNaN(number)) {
+            console.log("숫자가 아닙니다. 다시 입력하세요.");
+        }
+        else {
+            // 소수 판별하기
+            if(prime_discrm(number)) {
+                console.log("소수다");
+            }
+            else {
+                console.log("소수 아니다.");
+            }
+
+        }
+
+        callback();
+    }
+});

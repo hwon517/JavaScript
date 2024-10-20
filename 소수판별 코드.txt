@@ -1,0 +1,35 @@
+const repl = require('repl');
+
+repl.start({
+    prompt: "소수판별수 입력 > ",
+    eval: (command, context, filename, callback) => {
+        let number = Number(command);
+
+        if(isNaN(number)) {
+            console.log("숫자가 아닙니다. 다시 입력하세요.");
+        }
+        else {
+            // 소수 판별하기
+            let div_num = 2;
+
+            while(true) {
+                let rem = number % div_num;
+                if(rem == 0) {
+                    if(number == div_num) {
+                        console.log("소수다.");
+                    }
+                    else {
+                        console.log("소수 아니다.");
+                    }
+                    break;
+                }
+                else {
+                    div_num++;
+                }
+            }
+
+        }
+
+        callback();
+    }
+});

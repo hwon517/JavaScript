@@ -1,0 +1,26 @@
+const repl = require('repl');
+
+repl.start({
+    prompt: "소인수분해를 수행할 수 입력 : ",
+    eval: (command, context, filename, callback) => {
+        let prime_num = Number(command);
+
+        if(isNaN(prime_num)) {
+            console.log("숫자가 아닙니다. 다시 입력하세요.");
+        }
+        else {
+            div_num = 2;
+            while(prime_num > 1) {
+                if(prime_num % div_num) {
+                    div_num++;
+                }
+                else {
+                    console.log(div_num);
+                    prime_num = prime_num / div_num;
+                    div_num = 2;
+                }
+            }
+        }
+        callback();
+    }
+});
